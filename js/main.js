@@ -1,5 +1,5 @@
 // Número de WhatsApp: prefijo de país + número, sin "+" ni espacios
-const WHATSAPP = '34600000000';
+const WHATSAPP = '34615482172';
 
 const MENSAJE_GENERAL = 'Hola, me gustaría pedir un ramo.';
 
@@ -8,7 +8,6 @@ function enlaceWhatsApp(texto) {
 }
 
 function formatearTelefono(numero) {
-  // 34600000000 -> +34 600 00 00 00
   const [, pais, a, b, c, d] = numero.match(/^(\d{2})(\d{3})(\d{2})(\d{2})(\d{2})$/) || [];
   return pais ? `+${pais} ${a} ${b} ${c} ${d}` : `+${numero}`;
 }
