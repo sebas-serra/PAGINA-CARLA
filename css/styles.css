@@ -87,17 +87,31 @@ a { color: inherit; }
   overflow: hidden;
 }
 
-/* Mancha rosa detrás de la foto */
-.portada::after {
+/* Manchas rosas de fondo */
+.portada::before,
+.portada::after,
+.ramos::before,
+.ramos::after {
   content: "";
   position: absolute;
+  border-radius: 50%;
+  background: var(--rosa-claro);
+  z-index: 0;
+}
+
+/* Detrás de la foto */
+.portada::after {
   right: -120px;
   top: 60px;
   width: 560px;
   height: 560px;
-  border-radius: 50%;
-  background: var(--rosa-claro);
-  z-index: 0;
+}
+/* Detrás del título */
+.portada::before {
+  left: -200px;
+  top: -140px;
+  width: 460px;
+  height: 460px;
 }
 
 .cabecera {
@@ -197,7 +211,28 @@ a { color: inherit; }
 }
 
 /* ---------- Ramos ---------- */
-.ramos { padding: 24px 0; }
+.ramos {
+  position: relative;
+  padding: 24px 0;
+  overflow: hidden;
+}
+/* Manchas del catálogo */
+/* .ramos::before {
+  left: 340px;
+  top: 100px;
+  width: 100px;
+  height: 100px;
+}
+.ramos::after {
+  right: 670px;
+  bottom: -400px;
+  width: 560px;
+  height: 560px;
+} */
+.ramos .contenedor {
+  position: relative;
+  z-index: 1;
+}
 
 .seccion-cabecera {
   display: flex;
@@ -377,8 +412,8 @@ a { color: inherit; }
   margin-bottom: 28px;
 }
 .telefono:hover { text-decoration: underline; text-underline-offset: 6px; }
-.contacto .boton { background: var(--rosa); color: var(--verde-oscuro); }
-.contacto .boton:hover { background: #E08F96; }
+.boton-clarito { background: var(--rosa); color: var(--verde-oscuro); }
+.boton-clarito:hover { background: #E08F96; }
 .contacto :focus-visible { outline-color: var(--rosa); }
 
 /* ---------- Pie ---------- */
@@ -439,6 +474,8 @@ a { color: inherit; }
     height: 440px;
     transform: translateX(-50%);
   }
+
+  .ramos::after, .ramos::before, .portada::before { display: none;}
   .portada-contenido { grid-template-columns: 1fr; gap: 40px; }
   .portada-texto { padding-bottom: 0; }
   .portada-foto { max-width: 480px; margin: 0 auto; width: 88%; }
@@ -454,13 +491,13 @@ a { color: inherit; }
 }
 
 @media (max-width: 600px) {
+
   .marca img { height: 38px; }
   .cabecera .boton { padding: 10px 18px; }
-  .ramos { padding: 80px 0; }
+  .ramos { padding: 30px 0; }
   .ramos-lista { grid-template-columns: 1fr; gap: 56px; }
   .precio { right: -6px; }
-  .pasos, .contacto { padding: 80px 0; }
-  .portada-acciones a{ display: none; }
+  .pasos, .contacto { padding: 30px 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
